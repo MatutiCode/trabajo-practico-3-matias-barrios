@@ -39,4 +39,23 @@ function mostrarPersonajes(lista) {
     // contenedor.appendChild(tarjeta);
     console.log(imagen);
   });
+
+  const formulario = document.getElementById("formBusqueda");
+
+  formulario.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const texto = document.getElementById("buscador").value.trim();
+
+    if (texto === "") {
+      mostrarPersonajes(personajes);
+      return;
+    }
+
+    const resultados = personajes.filter((personaje) =>
+      personaje.name.toLowerCase().includes(texto.toLowerCase()),
+    );
+
+    mostrarPersonajes(resultados);
+  });
 }
